@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (defconst RUCKSACKS (-map (lambda (rucksack) (string-to-list rucksack))
-                          (-drop-last 1 (s-split "\n" INPUT)))
+                          (-drop-last 1 (s-lines INPUT)))
   "A list-of list-of numbers representing the items in the rucksacks.")
 
 (defconst CONTAINERS (-map (lambda (rucksack)

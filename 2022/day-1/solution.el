@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (defconst ELVES
-  (mapcar (lambda (elf) (mapcar 'string-to-number (s-split "\n" elf)))
+  (mapcar (lambda (elf) (mapcar 'string-to-number (s-lines elf)))
           (s-split "\n\n" INPUT))
   "Process input into a list-of list-of numbers, representing the
 caloric values of each item held by each elf.")

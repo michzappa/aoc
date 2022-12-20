@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (defconst ROUNDS (-map (lambda (round) (s-split " " round))
-                         (-drop-last 1 (s-split "\n" INPUT)))
+                         (-drop-last 1 (s-lines INPUT)))
   "A list-of list-of strings representing both moves for the round.")
 
 (defun play-round-1 (round)
