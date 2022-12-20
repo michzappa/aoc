@@ -21,9 +21,9 @@
              ("Y" 2)      ; 0 for loss,  2 for paper
              ("Z" 6)))))) ; 3 for draw, 3 for scissors
 
+;; 13526
 (defconst ANSWER-PART1
-  (apply '+ (-map 'play-round-1 ROUNDS))
-  "Sum score for all rounds.")
+  (apply '+ (-map 'play-round-1 ROUNDS)))
 
 (defun play-round-2 (round)
   (let ((opponent (-first-item round))
@@ -42,8 +42,8 @@
              ("Y" 6)      ; 3 for draw, 3 for scissors
              ("Z" 7)))))) ; 6 for win,  1 for rock
 
+;; 14204
 (defconst ANSWER-PART2
-  (apply '+ (-map 'play-round-2 ROUNDS))
-  "Sum score for all rounds.")
+  (apply '+ (-map 'play-round-2 ROUNDS)))
 
 (provide 'solution)

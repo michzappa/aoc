@@ -13,6 +13,7 @@ assignments.")
   (and (<= (-first-item range2) (-first-item range1))
        (>= (-second-item range2) (-second-item range1))))
 
+;; 464
 (defconst ANSWER-PART1
   (length (-filter (lambda (pair)
                      (let ((first (-first-item pair))
@@ -26,6 +27,7 @@ assignments.")
   (and (<= (-first-item range1) (-second-item range2))
        (<= (-first-item range2) (-second-item range1))))
 
+;; 770
 (defconst ANSWER-PART2
   (length (-filter (lambda (pair)
                      (let ((first (-first-item pair))

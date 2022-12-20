@@ -28,6 +28,7 @@ between the two compartments of each rucksack.")
     ;; uppercase letter
     (- item-type 38)))
 
+;; 7967
 (defconst ANSWER-PART1
   (apply '+ (-map 'priority CONTAINERS_SHARED_ITEM))
   "Sum of the priorities of the item type shared between each
@@ -47,6 +48,7 @@ rucksack in each group.")
                                   rucksack-three))))
         RUCKSACK_GROUPS))
 
+;; 2716s
 (defconst ANSWER-PART2
   (apply '+ (-map 'priority GROUPS_SHARED_ITEM))
   "Sum of the priorities of the item type shared between each groups' rucksacks. ")

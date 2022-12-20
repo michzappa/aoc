@@ -47,10 +47,10 @@ representing each level of crates.")
                 STARTING_STACKS
                 MOVES))
 
-(defconst ANSWER-PART1 (apply 'concat (-map '-first-item (move-crates 1)))
-  "The crates on top of the stacks.")
+;; "TDCHVHJTG"
+(defconst ANSWER-PART1 (apply 'concat (-map '-first-item (move-crates 1))))
 
-(defconst ANSWER-PART2 (apply 'concat (-map '-first-item (move-crates 2)))
-  "The crates on top of the stacks.")
+;; "NGCMPJLHV"
+(defconst ANSWER-PART2 (apply 'concat (-map '-first-item (move-crates 2))))
 
 (provide 'solution)
