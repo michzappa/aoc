@@ -1,4 +1,5 @@
 ;; -*- lexical-binding: t; -*-
+(require 'cl-lib)
 (require 'dash)
 (require 'f)
 (require 's)
