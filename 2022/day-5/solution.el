@@ -5,7 +5,7 @@
                                            (string-match (rx upper) cell)
                                            (match-string 0 cell))
                                          (seq-partition line 4)))
-                               (seq-drop-last (split-string (car (split-string INPUT "\n\n")) "\n") 1))
+                               (seq-drop-final (split-string-lines (car (split-string INPUT "\n\n")))))
   "A list-of list-of strings, representing each level of crates.")
 
 (defconst STARTING_STACKS
@@ -20,9 +20,9 @@
               (seq-repeat '() (length (car CRATE_LEVELS))))
   "Process the crate levels into their vertical stacks.")
 
-;; (print STARTING_STACKS)
-(defconst MOVES (mapcar (lambda (move) (mapcar 'string-to-number (seq-drop (split-string move (rx (or "move " " from " " to "))) 1)))
-                        (seq-drop-last (split-string (cadr (split-string INPUT "\n\n")) "\n") 1))
+(defconst MOVES (mapcar (lambda (move) (mapcar 'string-to-number
+                                          (seq-drop-first (split-string move (rx (or "move " " from " " to "))))))
+                        (seq-drop-final (split-string-lines (cadr (split-string INPUT "\n\n")))))
   "All of the moves represented as (number to be moved, from, to) lists.")
 
 (defun set-list-element (l n e)

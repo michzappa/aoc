@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (defconst RUCKSACKS (mapcar (lambda (rucksack) (string-to-list rucksack))
-                            (seq-drop-last (split-string INPUT "\n") 1))
+                            (seq-drop-final (split-string-lines INPUT)))
   "A list-of list-of numbers representing the items in the rucksacks.")
 
 (defconst CONTAINERS (mapcar (lambda (rucksack)

@@ -4,8 +4,8 @@
 
 (defconst TREES (mapcar (lambda (line)
                           (mapcar 'string-to-number
-                                  (seq-drop-last (seq-drop (split-string line "") 1) 1)))
-                        (seq-drop-last (split-string INPUT "\n") 1))
+                                  (seq-drop-final (seq-drop-first (split-string line "")))))
+                        (seq-drop-final (split-string-lines INPUT)))
   "A list-of list-of numbers represnting the heights of the trees.")
 
 (defun left->right (grid) grid)
@@ -34,8 +34,8 @@ each tree is visible from outside the forest.")
 (mark-visible (bottom->top VISIBILITY))
 
 ;; 1851
-;; (defconst ANSWER-PART1 (apply '+ (mapcar 'cdr (seq-reduce 'append VISIBILITY '())))
-  ;; "The number of trees in the forest which are visible from the outside.")
+(defconst ANSWER-PART1 (apply '+ (mapcar 'cdr (seq-reduce 'append VISIBILITY '())))
+  "The number of trees in the forest which are visible from the outside.")
 
 (defconst SCENIC_SCORES (mapcar (lambda (row) (mapcar (lambda (tree) (cons tree 1)) row)) TREES)
   "A list-of list-of pairs-of (number . 0/1) representing each

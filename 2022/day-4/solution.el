@@ -4,7 +4,7 @@
                                 (mapcar (lambda (assignment)
                                           (mapcar 'string-to-number (split-string assignment "-")))
                                         (split-string pair ",")))
-                              (seq-drop-last (split-string INPUT "\n") 1))
+                              (seq-drop-final (split-string-lines INPUT)))
   "A list-of list-of list-of numbers representing section assignments to each elf.")
 
 (defun fully-contained? (range1 range2)

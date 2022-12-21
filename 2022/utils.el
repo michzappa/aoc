@@ -1,5 +1,14 @@
 ;; -*- lexical-binding: t; -*-
 
+(defmacro split-string-lines (str)
+  `(split-string ,str "\n"))
+
+(defmacro seq-drop-first (l)
+  `(seq-drop ,l 1))
+
+(defmacro seq-drop-final (l)
+  `(seq-drop-last ,l 1))
+
 (defmacro seq-drop-last (l n)
   `(let ((l2 ,l))
      (seq-take l2 (- (length l2) ,n))))

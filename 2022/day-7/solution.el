@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(defconst COMMANDS (mapcar (lambda (cmd) (split-string cmd " ")) (split-string INPUT "\n"))
+(defconst COMMANDS (mapcar (lambda (cmd) (split-string cmd " ")) (split-string-lines INPUT))
   "A list-of list-of strings representing the commands entered into the machine.")
 
 (defconst DIR_SIZES (let ((dir-depth nil)
