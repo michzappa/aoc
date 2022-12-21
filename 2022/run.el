@@ -25,6 +25,6 @@
   (if (boundp part1)
       (print (symbol-value part1))
     (print "Cannot find answer to part 1."))
-  (if (boundp part1)
+  (if (boundp part2)
       (print (symbol-value part2))
-    (print "Cannot find answer to part 1.")))
+    (print "Cannot find answer to part 2.")))

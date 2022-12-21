@@ -34,8 +34,8 @@ each tree is visible from outside the forest.")
 (mark-visible (bottom->top VISIBILITY))
 
 ;; 1851
-(defconst ANSWER-PART1 (apply '+ (mapcar 'cdr (seq-reduce 'append VISIBILITY '())))
-  "The number of trees in the forest which are visible from the outside.")
+;; (defconst ANSWER-PART1 (apply '+ (mapcar 'cdr (seq-reduce 'append VISIBILITY '())))
+  ;; "The number of trees in the forest which are visible from the outside.")
 
 (defconst SCENIC_SCORES (mapcar (lambda (row) (mapcar (lambda (tree) (cons tree 1)) row)) TREES)
   "A list-of list-of pairs-of (number . 0/1) representing each
