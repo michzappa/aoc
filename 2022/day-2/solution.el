@@ -1,12 +1,13 @@
 ;; -*- lexical-binding: t; -*-
-(defconst ROUNDS (-map (lambda (round) (s-split " " round))
-                         (-drop-last 1 (s-lines INPUT)))
+
+(defconst ROUNDS (mapcar (lambda (round) (split-string round " "))
+                         (seq-drop-last (split-string INPUT "\n") 1))
   "A list-of list-of strings representing both moves for the round.")
 
 (defun play-round-1 (round)
-  "Returns score for this round of rock-paper-scissors."
-  (let ((opponent (-first-item round))
-        (me (-second-item round)))
+  "Returns score for the first round of rock-paper-scissors."
+  (let ((opponent (car round))
+        (me (cadr round)))
     (pcase opponent
       ("A" (pcase me
              ("X" 4)      ; 3 for draw, 1 for rock
@@ -23,11 +24,13 @@
 
 ;; 13526
 (defconst ANSWER-PART1
-  (apply '+ (-map 'play-round-1 ROUNDS)))
+  (apply '+ (mapcar 'play-round-1 ROUNDS))
+  "Total score following round 1's strategy guide.")
 
 (defun play-round-2 (round)
-  (let ((opponent (-first-item round))
-        (me (-second-item round)))
+  "Returns score for the second rounds of rock-paper-scissors."
+  (let ((opponent (car round))
+        (me (cadr round)))
     (pcase opponent
       ("A" (pcase me
              ("X" 3)      ; 0 for loss, 3 for scissors
@@ -44,6 +47,7 @@
 
 ;; 14204
 (defconst ANSWER-PART2
-  (apply '+ (-map 'play-round-2 ROUNDS)))
+  (apply '+ (mapcar 'play-round-2 ROUNDS))
+  "Total score following round 2's strategy.")
 
 (provide 'solution)

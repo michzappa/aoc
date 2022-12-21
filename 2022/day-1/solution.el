@@ -1,13 +1,14 @@
 ;; -*- lexical-binding: t; -*-
+
 (defconst ELVES
-  (mapcar (lambda (elf) (mapcar 'string-to-number (s-lines elf)))
-          (s-split "\n\n" INPUT))
-  "Process input into a list-of list-of numbers, representing the
-caloric values of each item held by each elf.")
+  (mapcar (lambda (elf) (mapcar 'string-to-number (split-string elf "\n")))
+          (split-string INPUT "\n\n" ))
+  "A list-of list-of numbers, representing the caloric values of
+each item held by each elf.")
 
 (defconst TOTALS
   (mapcar (lambda (elf) (apply '+ elf)) ELVES)
-  "Total calories held by each elf.")
+  "A list of total calories held by each elf.")
 
 ;; 67027
 (defconst ANSWER-PART1
@@ -16,7 +17,7 @@ caloric values of each item held by each elf.")
 
 ;; 197291
 (defconst ANSWER-PART2
-  (apply '+ (-take 3 (sort TOTALS '>)))
+  (apply '+ (seq-take (sort TOTALS '>) 3))
   "The sum of the three highest caloric values.")
 
 (provide 'solution)
