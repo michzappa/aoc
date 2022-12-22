@@ -13,12 +13,12 @@
 (defun top->bottom (grid) (apply 'cl-mapcar 'list grid))
 (defun bottom->top (grid) (apply 'cl-mapcar 'list (reverse grid)))
 
-(defvar VISIBILITY (mapcar (lambda (row) (mapcar (lambda (tree) (cons tree 0)) row)) TREES)
+(defvar visibilities (mapcar (lambda (row) (mapcar (lambda (tree) (cons tree 0)) row)) TREES)
   "A list-of list-of pairs-of (number . 0/1) representing whether
 each tree is visible from outside the forest.")
 
 (defun mark-visible (trees)
-  "Mark trees visible in VISIBILITY if they are."
+  "Mark trees visible in VISIBILITIES if they are."
   (mapc (lambda (row)
           (let ((visible-height -1))
             (mapc (lambda (tree)
@@ -28,22 +28,22 @@ each tree is visible from outside the forest.")
                   row)))
         trees))
 
-(mark-visible (left->right VISIBILITY))
-(mark-visible (right->left VISIBILITY))
-(mark-visible (top->bottom VISIBILITY))
-(mark-visible (bottom->top VISIBILITY))
+(mark-visible (left->right visibilities))
+(mark-visible (right->left visibilities))
+(mark-visible (top->bottom visibilities))
+(mark-visible (bottom->top visibilities))
 
 ;; 1851
-(defconst ANSWER-PART1 (apply '+ (mapcar 'cdr (seq-reduce 'append VISIBILITY '())))
+(defconst ANSWER-PART1 (apply '+ (mapcar 'cdr (seq-reduce 'append visibilities '())))
   "The number of trees in the forest which are visible from the outside.")
 
-(defconst SCENIC_SCORES (mapcar (lambda (row) (mapcar (lambda (tree) (cons tree 1)) row)) TREES)
+(defvar scenic-scores (mapcar (lambda (row) (mapcar (lambda (tree) (cons tree 1)) row)) TREES)
   "A list-of list-of pairs-of (number . 0/1) representing each
   tree's scenic score, defined as the product of how far it can
   see in each direction.")
 
 (defun mark-scenic-scores (trees)
-  "Multiply the existing score in SCENIC_SCORES for each tree by its viewing
+  "Multiply the existing score in scenic-scores for each tree by its viewing
 distance in this direction."
   (mapc (lambda (row)
           (mapc (lambda (tree)
@@ -61,13 +61,13 @@ distance in this direction."
                 row))
         trees))
 
-(mark-scenic-scores (left->right SCENIC_SCORES))
-(mark-scenic-scores (right->left SCENIC_SCORES))
-(mark-scenic-scores (top->bottom SCENIC_SCORES))
-(mark-scenic-scores (bottom->top SCENIC_SCORES))
+(mark-scenic-scores (left->right scenic-scores))
+(mark-scenic-scores (right->left scenic-scores))
+(mark-scenic-scores (top->bottom scenic-scores))
+(mark-scenic-scores (bottom->top scenic-scores))
 
 ;; 574080
-(defconst ANSWER-PART2 (apply 'max (mapcar 'cdr  (seq-reduce 'append SCENIC_SCORES '())))
+(defconst ANSWER-PART2 (apply 'max (mapcar 'cdr  (seq-reduce 'append scenic-scores '())))
   "The highest scenic score in the forest, the product of all a
 tree's viewing distances.")
 
