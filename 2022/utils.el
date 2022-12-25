@@ -1,5 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
+(defun set-list-element (l n e)
+  "Replace the N'th element in L with E. 0-indexed."
+  (seq-map-indexed (lambda (item index) (if (= index n) e item)) l))
+
 (defmacro split-string-lines (str)
   `(split-string ,str "\n"))
 

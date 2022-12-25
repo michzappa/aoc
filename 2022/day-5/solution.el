@@ -25,10 +25,6 @@
                         (seq-drop-final (split-string-lines (cadr (split-string INPUT "\n\n")))))
   "All of the moves represented as (number to be moved, from, to) lists.")
 
-(defun set-list-element (l n e)
-  "Replace the N'th element in L with E."
-  (seq-map-indexed (lambda (item index) (if (= index n) e item)) l))
-
 (defun move-crates (part)
   "Apply the MOVES list to STARTING_STACKS. Part 1 moves one crate
 at a time, part 2 can move multiple."
